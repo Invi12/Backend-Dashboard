@@ -1,0 +1,121 @@
+﻿{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/Todo{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "todo-api",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Todo{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ],
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "SwaggerKey": "todos"
+    },
+    {
+      "DownstreamPathTemplate": "/Team{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "team-api",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Team{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ],
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "SwaggerKey": "team"
+    },
+    {
+      "DownstreamPathTemplate": "/Authentication{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authentication-api",
+          "Port": 5005
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Authentication{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ],
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "SwaggerKey": "authentication"
+    },
+    {
+      "DownstreamPathTemplate": "/User{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-api",
+          "Port": 5004
+        }
+      ],
+      "UpstreamPathTemplate": "/api/User{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ],
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "SwaggerKey": "user"
+    },
+    {
+      "DownstreamPathTemplate": "/RabbitMQ{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "rabbitmq",
+          "Port": 5672
+        }
+      ],
+      "UpstreamPathTemplate": "/api/RabbitMQ{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ],
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "SwaggerKey": "todo"
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration",
+    "RouteIsCaseSensitive": true
+  },
+  "SwaggerEndPoints": [
+    {
+      "Key": "authentication",
+      "Config": [
+        {
+          "Name": "Authentication API",
+          "Version": "v1",
+          "Url": "https://authentication-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "team",
+      "Config": [
+        {
+          "Name": "Teams API",
+          "Version": "v1",
+          "Url": "https://team-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "todo",
+      "Config": [
+        {
+          "Name": "Todos API",
+          "Version": "v1",
+          "Url": "https://todos-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "user",
+      "Config": [
+        {
+          "Name": "User API",
+          "Version": "v1",
+          "Url": "https://user-api/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}

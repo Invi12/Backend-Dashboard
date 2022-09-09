@@ -1,0 +1,134 @@
+{
+  "rabbit_version": "3.8.9",
+  "rabbitmq_version": "3.8.9",
+  "product_name": "RabbitMQ",
+  "product_version": "3.8.9",
+  "users": [
+    {
+      "name": "admin",
+      "password": "admin",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/todo"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "admin",
+      "vhost": "/todo",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "queues": [
+    {
+      "name": "user.account-created.queue",
+      "vhost": "/todo",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+      }
+    },
+    {
+      "name": "membership.team-created.queue",
+      "vhost": "/todo",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+      }
+    },
+    {
+      "name": "todo.create-todo.queue",
+      "vhost": "/todo",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+      }
+    },
+    {
+      "name": "todo.update-todo.queue",
+      "vhost": "/todo",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+      }
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "account.account-created.exchange",
+      "vhost": "/todo",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "team.team-created.exchange",
+      "vhost": "/todo",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "team.create-todo.exchange",
+      "vhost": "/todo",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "team.update-todo.exchange",
+      "vhost": "/todo",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "account.account-created.exchange",
+      "vhost": "/todo",
+      "destination": "user.account-created.queue",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "team.team-created.exchange",
+      "vhost": "/todo",
+      "destination": "membership.team-created.queue",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "team.create-todo.exchange",
+      "vhost": "/todo",
+      "destination": "todo.create-todo.queue",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "team.update-todo.exchange",
+      "vhost": "/todo",
+      "destination": "todo.update-todo.queue",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    }
+  ]
+}
